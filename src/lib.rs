@@ -1,4 +1,4 @@
-//! Utilities for working with [`Cursor<&[u8]>`](Cursor)s
+//! Utilities for working with [`Cursor<&[u8]>`](Cursor)s.
 use std::fmt;
 use std::io::Cursor;
 
@@ -26,7 +26,9 @@ impl CursorError {
 impl fmt::Display for CursorError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::Unterminated(line_len) => write!(f, "unterminated line of {line_len} bytes so far"),
+            Self::Unterminated(line_len) => {
+                write!(f, "unterminated line of {line_len} bytes so far")
+            }
             Self::Incomplete => "incomplete".fmt(f),
             Self::Integer => "could not parse integer".fmt(f),
             Self::Size => "could not parse size".fmt(f),
